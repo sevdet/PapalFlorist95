@@ -9,6 +9,7 @@ public class PlayerBehavior : MonoBehaviour {
 	private float yAxis; // move up when 1 move down when -1
 	public Rigidbody2D rb;
 	public Animator animController;
+	bool isRightFacing = true;
 
 	// Use this for initialization
 	void Start () {
@@ -26,14 +27,18 @@ public class PlayerBehavior : MonoBehaviour {
 		transform.Translate (new Vector2 (xAxis, yAxis) * Time.deltaTime * speed);  // moves player
 
 		if (xAxis == 1) {
-			//rb.transform.localScale = new Vector2 (1f, 0f);
+			isRightFacing = true;
 			animController.Play ("walk");
 		} else if (xAxis == -1) {
-			//rb.transform.localScale = new Vector2 (-1f, 0f);
-			animController.Play ("walk");
+			isRightFacing = false;
+			animController.Play ("walkLeft");
 		}
 		else {
-			animController.Play ("idle");
+			if (isRightFacing) {
+				animController.Play ("idle");
+			} else {
+				animController.Play ("idleLeft");
+			}
 		}
 	}
 }
