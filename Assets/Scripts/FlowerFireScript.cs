@@ -39,6 +39,7 @@ public class FlowerFireScript : MonoBehaviour
     {
         if (notOnFireState == true)
         {
+            deathTimer = 0;
             resetRun = true;
             if (resetRun == true)
             {
