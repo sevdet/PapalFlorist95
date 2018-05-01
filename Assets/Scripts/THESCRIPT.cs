@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class THESCRIPT : MonoBehaviour {
 	
@@ -17,6 +18,7 @@ public class THESCRIPT : MonoBehaviour {
 	bool resetFire;
 	public GameObject flower;
 	SpriteRenderer fRenderer;
+	public GameObject scoreInGame;
 	public Sprite flowernormal;
 	public Sprite flowerburning1;
 	public Sprite flowerburning2;
@@ -57,7 +59,7 @@ public class THESCRIPT : MonoBehaviour {
 
     }*/
 		if (scoring) {
-			score = score + 10 * Time.deltaTime;
+			score = score + 10 + Time.deltaTime;
 		}
 	}
 
@@ -67,6 +69,8 @@ public class THESCRIPT : MonoBehaviour {
 		GameRunning();
 
 		Debug.Log ("DT: " + deathTimer + ", FT: " + flowerTimer);
+
+		scoreInGame.gameObject.GetComponent<Text>().text = ("Score: " + (int)score);
 	}
 
 	public void GameRunning ()
