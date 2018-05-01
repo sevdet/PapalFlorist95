@@ -11,7 +11,7 @@ public class THESCRIPT : MonoBehaviour {
 	float flowerTimerCap;
 	float flowerTimerMin;
 	public float deathTimer;
-	public float deathTimerCap = 5;
+	public float deathTimerCap = 8;
 	public float score;
 	public bool onFireState = false;
 	bool resetRun = true;
@@ -26,6 +26,10 @@ public class THESCRIPT : MonoBehaviour {
 	public Sprite flowerBurnt;
 	public GameObject fObject;
 	bool colidingflower = false;
+	public float bottomCap;
+	public float topCap;
+	public float difficultySlider;
+	public float difficultySlider2;
 
 	bool scoring = true;
 
@@ -68,6 +72,7 @@ public class THESCRIPT : MonoBehaviour {
 	{
 		Animation();
 		GameRunning();
+		difficultyCurve ();
 
 		//Debug.Log ("DT: " + deathTimer + ", FT: " + flowerTimer);
 
@@ -81,7 +86,7 @@ public class THESCRIPT : MonoBehaviour {
 		if (onFireState == false) {
 			if (resetRun == true) {
 				deathTimer = 0;
-				flowerTimer = Random.Range (3, 10);
+				flowerTimer = Random.Range (bottomCap, topCap);
 				resetRun = false;
 			} else if (resetRun == false) {
 				flowerTimer = flowerTimer - 1 * Time.deltaTime;
@@ -113,9 +118,36 @@ public class THESCRIPT : MonoBehaviour {
 
 	public void difficultyCurve()
 	{
+		if (score < 7000) {
+			topCap = 10;
+			bottomCap = 5;
+		}
+		if (score >= 7000 && score < 10000) {
+			topCap = 9;
+			bottomCap = 4;
+		}
+		if (score >= 10000 && score < 15000) {
+			topCap = 8;
+			bottomCap = 3;
+		}
+		if (score >= 15000 && score < 20000) {
+			topCap = 7;
+			bottomCap = 2;
+		}
+		if (score >= 20000 && score < 25000) {
+			topCap = 6;
+		}
+		if (score >= 25000 && score < 30000) {
+			topCap = 5;
+		}
+		if (score >= 30000) {
+			topCap = 4;
+		}
+
 
 
 	}
+
 
 	void Animation() //This is how all the expressions work and how the objects within the house should function.
 	{
@@ -127,13 +159,13 @@ public class THESCRIPT : MonoBehaviour {
 		{
 			fObject.GetComponent<SpriteRenderer>().sprite = flowerburning1;
 		}
-		if (deathTimer > 2 && deathTimer <= 3) {
+		if (deathTimer > 2 && deathTimer <= 4) {
 			fObject.GetComponent<SpriteRenderer> ().sprite = flowerburning2;
 		}
-		if (deathTimer > 3 && deathTimer <= 4) {
+		if (deathTimer > 4 && deathTimer <= 6) {
 			fObject.GetComponent<SpriteRenderer>().sprite = flowerburning3;
 		}
-		if (deathTimer > 4)
+		if (deathTimer > 6)
 		{
 			fObject.GetComponent<SpriteRenderer>().sprite = flowerBurnt;
 		}
