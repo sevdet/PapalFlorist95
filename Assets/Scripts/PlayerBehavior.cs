@@ -13,7 +13,7 @@ public class PlayerBehavior : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		speed = 3;
+		speed = 10;
 		rb = this.GetComponent<Rigidbody2D> ();
 		rb.bodyType = RigidbodyType2D.Dynamic; 
 		animController = this.GetComponent<Animator> ();
