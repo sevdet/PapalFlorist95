@@ -25,6 +25,7 @@ public class THESCRIPT : MonoBehaviour {
 	public Sprite flowerburning3;
 	public Sprite flowerBurnt;
 	public GameObject fObject;
+	bool colidingflower = false;
 
 	bool scoring = true;
 
@@ -68,7 +69,7 @@ public class THESCRIPT : MonoBehaviour {
 		Animation();
 		GameRunning();
 
-		Debug.Log ("DT: " + deathTimer + ", FT: " + flowerTimer);
+		//Debug.Log ("DT: " + deathTimer + ", FT: " + flowerTimer);
 
 		scoreInGame.gameObject.GetComponent<Text>().text = ("Score: " + (int)score);
 		PlayerPrefs.SetFloat("Score", score);
@@ -103,10 +104,11 @@ public class THESCRIPT : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetKeyDown (KeyCode.Space)) {
+	/*	if (Input.GetKeyDown (KeyCode.Space)) {
+			
 			onFireState = false;
 			resetRun = true;
-			}
+			}*/
 	}
 
 	public void difficultyCurve()
@@ -136,5 +138,16 @@ public class THESCRIPT : MonoBehaviour {
 			fObject.GetComponent<SpriteRenderer>().sprite = flowerBurnt;
 		}
 	}
-}
 
+	void OnTriggerStay2D(Collider2D other) {
+		if(Input.GetKey(KeyCode.Space)){
+			onFireState = false;
+			resetRun = true;
+		//colidingflower = true;
+	
+		
+		
+}
+		Debug.Log ("colliding");
+	}
+}
