@@ -8,13 +8,14 @@ public class PlayerBehavior : MonoBehaviour {
 	private float xAxis; // move right when 1 move left when -1
 	private float yAxis; // move up when 1 move down when -1
 	public Rigidbody2D rb;
+	public Animator animController;
 
 	// Use this for initialization
 	void Start () {
 		speed = 3;
 		rb = this.GetComponent<Rigidbody2D> ();
 		rb.bodyType = RigidbodyType2D.Dynamic; 
-		rb.gravityScale = 0;
+		animController = this.GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -23,5 +24,16 @@ public class PlayerBehavior : MonoBehaviour {
 		yAxis = Input.GetAxis ("Vertical"); // handle direction for W/S/up/down key presses 
 
 		transform.Translate (new Vector2 (xAxis, yAxis) * Time.deltaTime * speed);  // moves player
+
+		if (xAxis == 1) {
+			//rb.transform.localScale = new Vector2 (1f, 0f);
+			animController.Play ("walk");
+		} else if (xAxis == -1) {
+			//rb.transform.localScale = new Vector2 (-1f, 0f);
+			animController.Play ("walk");
+		}
+		else {
+			animController.Play ("idle");
+		}
 	}
 }
