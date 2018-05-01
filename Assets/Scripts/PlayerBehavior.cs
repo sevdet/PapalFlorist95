@@ -35,9 +35,17 @@ public class PlayerBehavior : MonoBehaviour {
 		}
 		else {
 			if (isRightFacing) {
-				animController.Play ("idle");
+				if (Input.GetKey(KeyCode.Space)) {
+					animController.Play ("wateringRight");
+				} else {
+					animController.Play ("idle");
+				}
 			} else {
-				animController.Play ("idleLeft");
+				if (Input.GetKey (KeyCode.Space)) {
+					animController.Play ("wateringLeft");
+				} else {
+					animController.Play ("idleLeft");
+				}
 			}
 		}
 	}
