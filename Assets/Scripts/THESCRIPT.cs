@@ -77,7 +77,7 @@ public class THESCRIPT : MonoBehaviour {
 		//Debug.Log ("DT: " + deathTimer + ", FT: " + flowerTimer);
 
 		scoreInGame.gameObject.GetComponent<Text>().text = ("Score: " + (int)score);
-		PlayerPrefs.SetFloat("Score", score);
+		PlayerPrefs.SetFloat("Score", (int)score);
 
 	}
 
