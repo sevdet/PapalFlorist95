@@ -36,13 +36,15 @@ public class PlayerBehavior : MonoBehaviour {
 		else {
 			if (isRightFacing) {
 				if (Input.GetKey(KeyCode.Space)) {
-					animController.Play ("wateringRight");
+					//animController.Play ("wateringRight");
+					animController.SetTrigger("waterRight");
 				} else {
 					animController.Play ("idle");
 				}
 			} else {
-				if (Input.GetKey (KeyCode.Space)) {
-					animController.Play ("wateringLeft");
+				if (Input.GetKey(KeyCode.Space)) {
+					//animController.Play ("wateringLeft");
+					animController.SetTrigger("waterLeft");
 				} else {
 					animController.Play ("idleLeft");
 				}
