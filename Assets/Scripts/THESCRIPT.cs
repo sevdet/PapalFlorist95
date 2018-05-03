@@ -119,29 +119,29 @@ public class THESCRIPT : MonoBehaviour {
 	public void difficultyCurve()
 	{
 		if (score < 7000) {
-			topCap = 10;
+			topCap = 12;
 			bottomCap = 5;
 		}
 		if (score >= 7000 && score < 10000) {
-			topCap = 9;
+			topCap = 11;
 			bottomCap = 4;
 		}
 		if (score >= 10000 && score < 15000) {
-			topCap = 8;
+			topCap = 10;
 			bottomCap = 3;
 		}
 		if (score >= 15000 && score < 20000) {
-			topCap = 7;
+			topCap = 9;
 			bottomCap = 2;
 		}
 		if (score >= 20000 && score < 25000) {
-			topCap = 6;
+			topCap = 8;
 		}
 		if (score >= 25000 && score < 30000) {
-			topCap = 5;
+			topCap = 7;
 		}
 		if (score >= 30000) {
-			topCap = 4;
+			topCap = 6;
 		}
 
 
